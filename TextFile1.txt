@@ -1,0 +1,54 @@
+Received: from DM3PR20MB0651.namprd20.prod.outlook.com (10.164.250.139) by
+ DM3PR20MB0650.namprd20.prod.outlook.com (10.164.250.138) with Microsoft SMTP
+ Server (TLS) id 15.1.293.16 via Mailbox Transport; Tue, 13 Oct 2015 11:12:51
+ +0000
+Received: from CO2PR20CA0021.namprd20.prod.outlook.com (10.163.96.31) by
+ DM3PR20MB0651.namprd20.prod.outlook.com (10.164.250.139) with Microsoft SMTP
+ Server (TLS) id 15.1.293.16; Tue, 13 Oct 2015 11:12:48 +0000
+Received: from BY2FFO11FD051.protection.gbl (2a01:111:f400:7c0c::134) by
+ CO2PR20CA0021.outlook.office365.com (2a01:111:e400:5292::31) with Microsoft
+ SMTP Server (TLS) id 15.1.293.16 via Frontend Transport; Tue, 13 Oct 2015
+ 11:12:48 +0000
+Authentication-Results: spf=pass (sender IP is 104.47.125.82)
+ smtp.mailfrom=xymphonic.com; virtoga02.onmicrosoft.com; dkim=none (message
+ not signed) header.d=none;virtoga02.onmicrosoft.com; dmarc=bestguesspass
+ action=none header.from=xymphonic.com;
+Received-SPF: Pass (protection.outlook.com: domain of xymphonic.com designates
+ 104.47.125.82 as permitted sender) receiver=protection.outlook.com;
+ client-ip=104.47.125.82; helo=APC01-SG2-obe.outbound.protection.outlook.com;
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (104.47.125.82)
+ by BY2FFO11FD051.mail.protection.outlook.com (10.1.15.188) with Microsoft
+ SMTP Server (TLS) id 15.1.286.14 via Frontend Transport; Tue, 13 Oct 2015
+ 11:12:47 +0000
+Received: from HKXPR06MB0456.apcprd06.prod.outlook.com (10.161.137.22) by
+ HKXPR06MB0456.apcprd06.prod.outlook.com (10.161.137.22) with Microsoft SMTP
+ Server (TLS) id 15.1.293.16; Tue, 13 Oct 2015 11:12:41 +0000
+Received: from HKXPR06MB0456.apcprd06.prod.outlook.com ([10.161.137.22]) by
+ HKXPR06MB0456.apcprd06.prod.outlook.com ([10.161.137.22]) with mapi id
+ 15.01.0293.007; Tue, 13 Oct 2015 11:12:41 +0000
+From: Cuong Hoang <cuong.hoang@xymphonic.com>
+To: "virtoga01@outlook.com" <virtoga01@outlook.com>, Hoang Quoc Cuong
+	<cuonghq612@outlook.com>, virtoga 2 <virtoga02@virtoga02.onmicrosoft.com>
+Subject: Re: test message with attachments
+Thread-Topic: test message with attachments
+Thread-Index: AQHQ/+N+olj4222nwUCphJLs8uCiFJ5d2U+vgAlW9SKAAIbx7IABmSos
+Date: Tue, 13 Oct 2015 11:12:40 +0000
+Message-ID: <5C58682A2B694D49.2A455D54-9D2F-41BE-B9CD-353B88153133@mail.outlook.com>
+References: <DM3PR1001MB106927D4B26C6063751037BC80370@DM3PR1001MB1069.namprd10.prod.outlook.com>,<CY1PR20MB06489659893978F0B8488E27EE370@CY1PR20MB0648.namprd20.prod.outlook.com>,<CY1PR20MB0648290DFBFBE37413E68125EE310@CY1PR20MB0648.namprd20.prod.outlook.com>,<HKXPR06MB0456DF180846B0F32E92CEE3FB310@HKXPR06MB0456.apcprd06.prod.outlook.com>
+In-Reply-To: <HKXPR06MB0456DF180846B0F32E92CEE3FB310@HKXPR06MB0456.apcprd06.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=cuong.hoang@xymphonic.com; 
+x-originating-ip: [54.68.26.199]
+X-Microsoft-Exchange-Diagnostics-untrusted: 1;HKXPR06MB0456;5:gd3iPWB4vFjZsi1Kpiq1d7EYvWa713pysfnK1AoHbS4fCvd2d3ohE53lOSVs1ydlu5J7yX0FQkJ7M62eOyHwe5QFJw5y+SYMmWX7enAv3MWrg4SdsU0o/MLLCTxu6TchKu+8NhT1YZPphHgXcoc3Jw==;24:n7wX9Ek+DrQztmqDmGuX74gATYbVTOHY6CQwYweEdyAN+UpUc5+86etSmeddYnHc0wxwcKEIeo1gF2CJLjilPImhPhLFT0oDbzkcXDU1T5c=;20:Yg+dpbq2bup1qRUwQ/BqPK3hIRb/ZdniYBYbnOdfjOsXlKQwTwZJ8pS5bBEJtZCXBrYXhWatayFZ+ciB5eS9Wg==
+X-Microsoft-Antispam-Untrusted: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:HKXPR06MB0456;
+x-microsoft-antispam-prvs: <HKXPR06MB045699B182609FEFA429610BFB300@HKXPR06MB0456.apcprd06.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:(196466463700132)(189930954265078);UriScan:(196466463700132)(189930954265078);
+x-exchange-antispam-report-cfa-test: BCL:0;PCL:0;RULEID:(601004)(2401047)(5005006)(8121501046)(520078)(3002001);SRVR:HKXPR06MB0456;BCL:0;PCL:0;RULEID:;SRVR:HKXPR06MB0456;BCL:0;PCL:0;RULEID:(601004)(2401047)(8121501046)(520078)(3002001);SRVR:DM3PR20MB0651;BCL:0;PCL:0;RULEID:;SRVR:DM3PR20MB0651;
+x-forefront-prvs: 07283408BE
+X-Forefront-Antispam-Report-Untrusted: SFV:NSPM;SFS:(10009020)(377454003)(199003)(189002)(106356001)(66066001)(106116001)(105586002)(81156007)(15198665003)(64706001)(33656002)(15395725005)(16236675004)(87936001)(2501003)(46102003)(5002640100001)(86362001)(5890100001)(5001960100002)(107886002)(7110500001)(40100003)(5008740100001)(76176999)(102836002)(54356999)(19580395003)(2900100001)(50986999)(15975445007)(92566002)(189998001)(77096005)(5001770100001)(2420400006)(19580405001)(10710500005)(2950100001)(19617315012)(97736004)(5004730100002)(19625215002)(11100500001)(101416001)(19627405001)(5007970100001)(10400500002)(18206015028)(122556002)(93886004)(7099028)(226483001)(567584001)(2874975003)(10090945008)(9984715007);DIR:OUT;SFP:1101;SCL:1;SRVR:HKXPR06MB0456;H:HKXPR06MB0456.apcprd06.prod.outlook.com;FPR:;SPF:None;PTR:InfoNoRecords;A:1;MX:1;LANG:en;
+received-spf: None (protection.outlook.com: xymphonic.com does not designate
+ permitted sender ho

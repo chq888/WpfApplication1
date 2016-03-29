@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationData xmlns="AirSync" xmlns:airsyncbase="AirSyncBase">
+	<airsyncbase:Attachments>
+		<airsyncbase:Attachment>
+			<airsyncbase:DisplayName>avatar.png</airsyncbase:DisplayName>
+			<airsyncbase:FileReference>7%3a1%3a0</airsyncbase:FileReference>
+			<airsyncbase:Method>1</airsyncbase:Method>
+			<airsyncbase:EstimatedDataSize>58871</airsyncbase:EstimatedDataSize>
+			<airsyncbase:ContentId>1357739a-a9bc-417d-b10a-79a704386c37</airsyncbase:ContentId>
+			<airsyncbase:IsInline>1</airsyncbase:IsInline>
+		</airsyncbase:Attachment>
+		<airsyncbase:Attachment>
+			<airsyncbase:DisplayName>blueStar.png</airsyncbase:DisplayName>
+			<airsyncbase:FileReference>7%3a1%3a1</airsyncbase:FileReference>
+			<airsyncbase:Method>1</airsyncbase:Method>
+			<airsyncbase:EstimatedDataSize>18016</airsyncbase:EstimatedDataSize>
+		</airsyncbase:Attachment>
+	</airsyncbase:Attachments>
+</ApplicationData>
