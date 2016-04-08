@@ -25,9 +25,9 @@ namespace WpfApplication1
             InitializeComponent();
             this.Loaded += Window1_Loaded;
 
+            /*
             IList<String> aaa = new List<String>();
-            //aaa = new List<String> { "111", "22" };
-
+            
             string aa = String.Join(",", aaa);
             string aa1 = String.Join(",", aaa);
 
@@ -36,7 +36,7 @@ namespace WpfApplication1
             Expression add = Expression.Add(firstArg, secondArg);
             Expression<Func<int>> dd =  Expression.Lambda<Func<int>>(add);
             Console.WriteLine(dd.Compile()());
-
+            */
         }
 
         // declare delegate
