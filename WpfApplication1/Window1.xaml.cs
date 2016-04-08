@@ -24,19 +24,14 @@ namespace WpfApplication1
         {
             InitializeComponent();
             this.Loaded += Window1_Loaded;
-
-            IList<String> aaa = new List<String>();
-            //aaa = new List<String> { "111", "22" };
-
-            string aa = String.Join(",", aaa);
-            string aa1 = String.Join(",", aaa);
-
+            IList<String> bbb = new List<String>();
+            string aa = String.Join(",", bbb);
+            string aa1 = String.Join(",", bbb);
             Expression firstArg = Expression.Constant(2);
             Expression secondArg = Expression.Constant(3);
             Expression add = Expression.Add(firstArg, secondArg);
             Expression<Func<int>> dd =  Expression.Lambda<Func<int>>(add);
             Console.WriteLine(dd.Compile()());
-
         }
 
         // declare delegate
