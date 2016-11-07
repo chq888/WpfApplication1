@@ -1,0 +1,1098 @@
+﻿-How to prevent my .NET DLL to be decompiled In .Net
+ 
+By design, .NET embeds rich Meta data inside the executable code using MSIL. Any one can
+easily decompile
+your DLL back using tools like ILDASM (owned by Microsoft) or Reflector for
+.NET which is a third party. Secondly, there are many third party tools, which make this
+decompiling process a click away. So any one can easily look in to your assemblies and reverse
+engineer them back in to actual source code and understand some real good logic, which can
+make it easy to crack your application.
+The process by which you can stop this reverse engineering is using “obfuscation”. It is a
+technique, which will foil the decompilers. Many third parties (XenoCode, Demeanor for .NET)
+provide .NET obfuscation solution. Microsoft includes one that is Dotfuscator Community
+Edition with Visual Studio.NET.
+
+
+
+-Find max top 5 number from three given sorted array
+If you have three integer type of sorted array and want to get highest top 5 number from given these three arrays then this article is for you, here is the most efficient way of getting top 5 number from three sorted array.
+
+Ex : If you have these three array given below -
+
+Array1  { 09,  87, 89, 888 }
+Array2  { 1, 13, 33, 49, 921 };
+Array3  { 22, 33, 44, 66, 88, 110 }
+
+Output : Output must be -
+
+Top5Numbers {888, 921, 110, 89, 88}
+
+below is the two way for doing this task first one is using only basic types and is the most efficient way, no extra loop no extra comparison no extra memory consumption, just pass the index of elements that need to be match with another one and calculate which is the next index to be match for each given array.
+
+second one is just for understanding of linq, extension method and how to do such task through linq, extension method.
+Top 5 values from three given arrays - basic type loop, comparison
+
+protected void Page_Load(object sender, EventArgs e)
+{
+ int[] Array1 = { 09, 65, 87, 89, 888 };
+ int[] Array2 = { 1, 13, 33, 49, 921 };
+ int[] Array3 = { 22, 44, 66, 88, 110 };
+
+ int[] Top5Numbers = new int[5];
+
+ int A1_IndexToMatch=Array1.Length-1;
+ int A2_IndexToMatch=Array2.Length-1;
+ int A3_IndexToMatch=Array3.Length-1;
+
+ for (int i = 0; i < 5; i++)
+ {
+     Top5Numbers[i] = findBigger(Array1, Array2, Array3,ref A1_IndexToMatch,ref A2_IndexToMatch,ref A3_IndexToMatch);
+ }
+}
+
+
+
+int findBigger(int[] Ar1, int[] Ar2, int[] Ar3, ref int A1_IndexToMatch, ref int A2_IndexToMatch, ref int A3_IndexToMatch)
+{
+ int bigger = 0;
+ if (Ar1[A1_IndexToMatch] > Ar2[A2_IndexToMatch] && Ar1[A1_IndexToMatch] > Ar3[A3_IndexToMatch])
+ {
+     bigger = Ar1[A1_IndexToMatch];
+     A1_IndexToMatch--;
+ }
+ else if (Ar2[A2_IndexToMatch] > Ar3[A3_IndexToMatch] && Ar2[A2_IndexToMatch] > Ar1[A1_IndexToMatch])
+ {
+     bigger = Ar2[A2_IndexToMatch];
+     A2_IndexToMatch--;
+ }
+ else
+ {
+     bigger = Ar3[A3_IndexToMatch];
+     A3_IndexToMatch--;
+ }
+ return bigger;
+
+}
+
+Get highest top 5 value from three given sorted array - Linq, Extension Method
+
+int[] Array1 = { 09, 65, 87, 89, 888 };
+int[] Array2 = { 1, 13, 33, 49, 921 };
+int[] Array3 = { 22, 44, 66, 88, 110 };
+
+int [] MergeArr = Array1.Concat(Array2).Concat(Array3).ToArray();
+Array.Sort(MergeArr);
+int [] Top5Number = MergeArr.Reverse().Take(5).ToArray() 
+
+
+
+-Program to reverse an array with given no of elements and remains as same
+
+In this article we will see how to reverse an array with given on of elements for the starting and remaining elements as its same position, suppose we have given this array {1,2,3,4,5,6,7,8} and number of elements to be reverse is 4 then output should be {4,3,2,1,5,6,7,8}.
+
+Another example :
+Array to be reverse
+{ 23, 55, 22, 68, 90} no to be reverse 3
+{"three", "two", "one", "four", "five"} no of elements to be reverse 3
+
+Output :
+reversed array
+{22, 55, 23, 68, 90}
+{"one", "two", "three", "four", "five"}
+reverse an array with given no of element and remaining element as same - for loop
+int[] reverseArrayWithGivenIndex(int noOfElementToBeReverse,int [] origArray)
+{
+    int[] resultArray = new int[origArray.Length];
+
+    for (int i = noOfElementToBeReverse - 1; i >= 0; i--)
+        resultArray[noOfElementToBeReverse - 1 - i] = origArray[i];
+
+    for (int i = noOfElementToBeReverse; i < origArray.Length; i++)
+        resultArray[i] = origArray[i];
+
+    return resultArray;
+
+}
+reverse an array to given index and remaining element as same - linq, extension method
+int[] reverseArrayWithGivenIndex(int noOfElementToBeReverse, int[] origArray)
+{
+  return origArray.Take(noOfElementToBeReverse).Reverse().Concat(origArray.Skip(noOfElementToBeReverse)).ToArray();
+
+}
+Calling of method -
+
+int[] origArray = { 1, 2, 3, 4, 5, 6, 7, 8 };
+int[] reversedArray = reverseArrayWithGivenIndex(4, origArray);
+
+
+
+
+-program to find first non repeating character in a string c# - 3 ways
+In c# you want to create logic that if a string like "abcabd" is passed to a method then it should return first non repetitive character from string like in above it should return "c".
+
+Below is three way to get the first non-repeating(distinct) character from the string -
+
+    First using IndexOf and LastIndexOf method of string type.
+    Using for loop and comparing operator.
+    Using Linq GroupBy method.
+
+
+Related post - program to removing duplicate entries, records from Array in C#.NET, program for factorial using recursion, while and for loop in c#, Reverse number program in c#, Get max occurred character in string in c#
+
+If we are talking about performance ( like execution time, complexity etc ) and arranging the above three ways in ascending order of execution time then sequence must be as below -
+
+Using for loop and comparing operator >> using IndexOf and LastIndexOf method of string type >> Using Linq GroupBy method.
+Find the first non-repeated character in a string - IndexOf Method
+
+public char firstNonRepetitive(string inputString)
+{
+    char firstDistinctChar = ' ';
+    for (int i = 0; i < inputString.Length; i++)
+    {
+        if (inputString.IndexOf(inputString[i], i + 1) == -1)
+        {
+            firstDistinctChar = inputString[i];
+            break;
+        }
+    }
+    return firstDistinctChar;
+
+}
+
+IndexOf and LastIndexOf method with nallable char type  
+
+//nullable char type
+public char? firstNonRepetitive(string inputString)
+{
+    for (int i = 0; i < inputString.Length; i++)
+    {
+        if (inputString.IndexOf(inputString[i]) == inputString.LastIndexOf(inputString[i]))
+            return inputString[i];
+    }
+    return null;
+
+}
+
+
+Get the first non-repeating(distinct) character from the string - for loop
+
+public char firstNonRepetitive(string inputString)
+{
+    int nextOccurrence = 0;
+    char firstDistinctChar = ' ';
+    for (int i = 0; i < inputString.Length; i++)
+    {
+        nextOccurrence = 0;
+        for (int j = (i + 1); j < inputString.Length; j++)
+        {
+            if (inputString[i] == inputString[j])
+                nextOccurrence++;
+        }
+        if (nextOccurrence == 0)
+        {
+            firstDistinctChar = inputString[i];
+            break;
+        }
+    }
+    return firstDistinctChar;
+
+}
+
+
+Find First Non Repeated Character in String - LINQ - Code
+
+public char firstNonRepetitive(string inputString)
+{
+   char firstDistinctChar = ' ';
+
+   firstDistinctChar = inputString.GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key).First();
+
+   return firstDistinctChar;
+}
+
+
+
+public char firstNonRepetitive(string inputString)
+{
+   char firstDistinctChar = ' ';
+
+   firstDistinctChar = (from chr in inputString group chr by chr into charGroups where charGroups.Count() == 1 select charGroups.Key).First();
+
+   return firstDistinctChar;
+}
+
+
+Input - "abcabd"
+
+
+string duplicateCharString = "abcabd";
+firstNonRepetitive(duplicateCharString);
+
+Output - "c"
+
+
+
+
+
+
+-program to removing duplicate entries, records from Array in C#.NET
+Below are the four method for removing duplicate entries from an array, all does same task with the different - 2 ways using list contain (internally using linq) method, collection distinct extension method (internally using linq need .net 3.5 framework or greater) and traditional for loop also work in lower version of .net framework.
+
+
+Related post - program for factorial using recursion, while and for loop in c#, Reverse number program in c#, Get max occurred character in string in c#
+
+You can use any of them for removing duplicate elements from given array of int or string (i.e. primitive data type )
+Remove duplicate values through List Contain method
+public string[] RemoveDuplicates(string[] inputArray)
+{
+    List<string> distinctArray = new List<string>();
+    foreach (string element in inputArray)
+    {
+        if (!distinctArray.Contains(element))
+            distinctArray.Add(element);
+    }
+
+    return distinctArray.ToArray<string>();
+}
+
+Delete Duplicate elements through ArrayList Contain method
+public string[] RemoveDuplicates(string[] inputArray)
+{
+    System.Collections.ArrayList distinctArray = new System.Collections.ArrayList();
+
+    foreach (string element in inputArray)
+    {
+        if (!distinctArray.Contains(element))
+            distinctArray.Add(element);
+    }
+
+    return (string[])distinctArray.ToArray(typeof(string));
+
+}
+
+Remove Duplicate number / record of array through Linq Distinct method
+public string[] RemoveDuplicates(string[] inputArray)
+{
+    return inputArray.Distinct().ToArray<string>();
+}
+
+public int[] RemoveDuplicates(int[] inputArray)
+{
+    return inputArray.Distinct().ToArray<int>();
+
+}
+
+Removing Duplicate entries through traditional for loop
+public string[] RemoveDuplicates(string[] inputArray)
+{
+
+    int length = inputArray.Length;
+    for (int i = 0; i < length; i++)
+    {
+        for (int j = (i + 1); j < length; )
+        {
+            if (inputArray[i] == inputArray[j])
+            {
+                for (int k = j; k < length - 1; k++)
+                    inputArray[k] = inputArray[k + 1];
+                length--;
+            }
+            else
+                j++;
+        }
+    }
+
+    string[] distinctArray = new string[length];
+    for (int i = 0; i < length; i++)
+        distinctArray[i] = inputArray[i];
+
+    return distinctArray;
+
+}
+
+Calling of RemoveDuplicates method -
+
+string[] inputArray = { "array", "array", "distinct", "elememnt", "remove", "distinct", "delete", "delete", "delete" };
+string[] distinctArray = RemoveDuplicates(inputArray);
+
+
+
+
+
+-program for factorial using recursion, while and for loop in c#
+In this article you can see how to calculate factorial of a number using recursive function , while loop and from for loop below are the three function just pass number that you want to calculate factorial and it will return the output (i.e factorial of the number).
+
+check out more programs Reverse number program in c# and Get max occurred character in string
+Calculate factorial using recursive function
+public double factorial_Recursion(int number)
+{
+    if (number == 1)
+        return 1;
+    else
+        return number * factorial_recursion(number - 1);
+}
+
+Calculate factorial using while loop
+public double factorial_WhileLoop(int number)
+{
+    double result = 1;
+    while (number != 1)
+    {
+        result = result * number;
+        number = number - 1;
+    }
+    return result;
+}
+
+Calculate factorial using for loop
+public double factorial_ForLoop(int number)
+{
+    double result = 1;
+    for (int i = number; i > 1; i--)
+    {
+        result = result * i;
+    }
+    return result;
+
+}
+
+
+
+double result = factorial_recursion(11);
+double result1 = factorial_WhilLoop(11);
+double result2 = factorial_ForLoop(11);
+
+
+
+
+
+-Reverse number program in c#
+Reversing given number without using any built-in function or method just use only basic function, this is often asked question in the interview.
+
+Following sample code is for reversing number using simple basic function, method takes only a number as input and returns reversed number of given input number in c#.
+
+WAP For Reverse Number - Code in C#
+
+public int reverseNumber(int Number)
+{
+    int ReverseNumber = 0;
+    while(Number > 0)
+    {
+        ReverseNumber = (ReverseNumber * 10) + (Number % 10);
+        Number = Number / 10;
+    }
+    return ReverseNumber;
+}
+
+Output :
+
+Entered Number : 11223344
+Output Number : 44332211
+
+
+
+
+
+
+
+
+-Get max occurred character in string in c#
+
+Most of the time in interview (fresher or 1 year) interviewer asks this questing and says that not to use inbuilt function use only basic function and find maximum occurring character for a string entered as well as find the no of occurrence of that character.
+
+Following code find the maximum occurring character in the given string it takes string as a input and returns maximum occurred character as char of that string.
+WAP For Maximum Occurred Char - Code C#
+
+
+public char MostOccurringCharInString(string charString)
+{
+    int mostOccurrence = -1;
+    char mostOccurringChar = ' ';
+    foreach (char currentChar  in charString)
+    {
+        int foundCharOccreence = 0;
+        foreach (char charToBeMatch in charString)
+        {
+            if (currentChar == charToBeMatch)
+                foundCharOccreence++;
+        }
+        if (mostOccurrence < foundCharOccreence)
+        {
+            mostOccurrence = foundCharOccreence;
+            mostOccurringChar = currentChar;
+        }
+    }
+    return mostOccurringChar;
+}
+
+Only need to calculate max occurrence of max occurred character.
+
+Following code find the occurrence of the maximum occurred character in the given string it takes string as a input and returns occurrence of maximum occurred character as int of that string.
+WAP For Occurrence of the Maximum Occurred Char - Code C#
+
+
+public int MostOccurrenceOfCharInString(string charString)
+{
+    int mostOccurrence = -1;
+    char mostOccurringChar = ' ';
+    foreach (char currentChar  in charString)
+    {
+        int foundCharOccreence = 0;
+        foreach (char charToBeMatch in charString)
+        {
+            if (currentChar == charToBeMatch)
+                foundCharOccreence++;
+        }
+        if (mostOccurrence < foundCharOccreence)
+        {
+            mostOccurrence = foundCharOccreence;
+            mostOccurringChar = currentChar;
+        }
+    }
+    return mostOccurrence;
+}
+
+
+
+
+-difference between Convert.toString and .toString in .Net
+
+There a lot of confusion that what is the difference between convert.toString and .toString my friend always asked me about that just to give an understanding of what the above question means see the below code.
+
+int i = 0; 
+MessageBox.Show(i.ToString()); 
+MessageBox.Show(Convert.ToString(i));
+
+We can convert the integer “i” using “i.ToString()” or “Convert.ToString” so what is the difference. The basic difference between them is “Convert” function handles NULLS while “i.ToString()” does not it will throw a NULL reference exception error. So as a good coding practice using “convert” is always safe.
+
+string str = NULL; 
+MessageBox.Show(str.ToString());  //throw an Error
+MessageBox.Show(Convert.ToString(str));
+
+
+-What is a Managed Code In .Net Framework
+
+Managed code runs inside the environment of CLR i.e. .NET runtime. In short, all IL are
+
+managed code. However, if you are using some third party software example VB6 or VC++
+component they are unmanaged code, as .NET runtime (CLR) does not have control over the
+source code execution of these languages.
+
+-What is a CLS (Common Language Specification) In .Net Framework
+
+This is a subset of the CTS, which all .NET languages are expected to support. It was always a dream of Microsoft to unite all different languages in to one umbrella and CLS is one-step towards that. Microsoft has defined CLS, which are nothing but guidelines, that language should follow so that it can ommunicate with other .NET languages in a seamless manner.
+CTS , CLS Explaition :
+CTS is a base class library that contains all type information like Int32, Int64, String , Boolean etc.  CLR understands only base type of library type not others type like CLR dont know what is int (C#) or Integer (VB) CLR only know Int32 type, So what about the CLS - CLS just a documentation that map base type into different - 2 language datatype, compiler reads and converts language datatype to documented base type (i.e CTS type) e.g compiler reads the associated base type of int(C# Integer in VB) is Int32 from CLS guidelines and convert it to Int32.
+
+
+-What is Common Type System CTS In .Net Framework
+In order that two language communicate smoothly CLR has CTS (Common Type
+System).Example in VB you have “Integer” and in C++ you have “long” these datatypes are not
+
+compatible so the interfacing between them is very complicated. In order that these two different
+languages communicate Microsoft introduced Common Type System. So “Integer” data type in
+VB6 and “int” data type in C++ will convert it to System.int32, which is data type of CTS. CLS,
+which is covered in the coming question, is subset of CTS.
+
+
+
+-What is CLR The Common Language Runtime In .Net Framework
+  
+Full form of CLR is Common Language Runtime and it forms the heart of the .NET framework.
+All Languages have runtime and it is the responsibility of the runtime to take care of the code
+execution of the program. For example, VC++ has MSCRT40.DLL, VB6 has MSVBVM60.DLL,
+and Java has Java Virtual Machine etc. Similarly, .NET has CLR. Following are the
+responsibilities of CLR
+
+• Garbage Collection: - CLR automatically manages memory thus eliminating
+memory leaks. When objects are not referred, GC automatically releases those
+memories thus providing efficient memory management.
+
+• Code Access Security: - CAS grants rights to program depending on the security
+configuration of the machine. Example the program has rights to edit or create a
+new file but the security configuration of machine does not allow the program to
+delete a file. CAS will take care that the code runs under the environment of
+machines security configuration.
+
+• Code Verification: - This ensures proper code execution and type safety while the
+code runs. It prevents the source code to perform illegal operation such as accessing
+invalid memory locations etc.
+
+• IL (Intermediate language)-to-native translators and optimizer’s:- CLR uses
+JIT, compiles the IL code to machine code, and then executes. CLR also determines
+depending on platform what is optimized way of running the IL code.
+
+
+
+-What is CODE Access security In .Net Framework
+CAS is part of .NET security model that determines whether a piece of code is allowed to run and
+
+what resources it can use while running. Example CAS will allow an application to read but not
+to write and delete a file or a resource from a folder.
+
+
+
+-difference between System exceptions and Application exceptions in .net
+
+All exception derives from Exception Base class. Exceptions can be generated programmatically
+or can be generated by system. Application Exception serves as the base class for all applicationspecific
+exception classes. It derives from Exception but does not provide any extended
+functionality. You should derive your custom application exceptions from Application Exception.
+Application exception is used when we want to define user-defined exception, while system
+exception is all that is defined by .NET.
+
+
+-What is Boxing and Unboxing In .Net Framework
+Boxing and unboxing act like bridges between value type and reference types. When we convert value type to a reference type it’s termed as boxing.
+Unboxing is just vice-versa. When an object box is cast back to its original value type, the value is copied out of the box into the appropriate storage location.
+
+Below is sample code of boxing and unboxing where integer data type are converted in to object and then vice versa.
+
+int i = 1;
+object obj = i; // boxing
+int j = (int) obj; // unboxing
+
+Boxing and Unboxing operation known as very expensive operation that's why it is recommended to avoid boxing and unboxing.
+
+
+
+-What are Value types and Reference types In .Net
+Value types directly contain their data that are either allocated on the stack or allocated in-line in
+a structure. So value types are actual data.
+Reference types store a reference to the value's memory address, and are allocated on the heap.
+Reference types can be self-describing types, pointer types, or interface types. You can view
+reference type as pointers to actual data.
+Variables that are value types each have their own copy of the data, and therefore operations on
+one variable do not affect other variables. Variables that are reference types can refer to the same
+object; therefore, operations on one variable can affect the same object referred to by another
+variable. All types derive from the System. Object base type.
+
+
+
+-What are the types of JIT (Just-in-time) compilation in .Net
+JIT compiler is a part of the runtime execution environment.
+In Microsoft .NET
+there are three types of JIT compilers:
+
+• Pre-JIT: - Pre-JIT compiles complete source code into native code in a single
+compilation cycle. This is done at the time of deployment of the application.
+
+• Econo-JIT: - Econo-JIT compiles only those methods that are called at runtime.
+However, these compiled methods are removed when they are not required.
+
+• Normal-JIT: - Normal-JIT compiles only those methods that are called at runtime.
+These methods are compiled the first time they are called, and then they are stored in
+cache. When the same methods are called again, the compiled code from cache is used
+for execution.
+
+
+-How Can we force garbage collector to run In .Net
+System.GC.Collect() forces garbage collector to run. This is
+not recommended but can be used if
+situations arise.
+
+
+
+-What is garbage collection In .Net
+In DotNet FrameWork, garbage collection (GC) is a form of
+automatic memory management. The garbage collector, or just collector, attempts to reclaim garbage, or memory occupied by objects that are no longer in use by the program.
+
+Garbage collection is a CLR feature, which automatically manages memory. Programmers forget
+to release the objects while coding ... Laziness (Remember in VB6 where one of the good
+practices is to set object to nothing). CLR automatically releases objects when they are no longer
+in use and refernced. CLR runs on non-deterministic to see the unused objects and cleans them.
+One side effect of this non-deterministic feature is that we cannot assume an object is destroyed
+when it goes out of the scope of a function. We should avoid using destructors because before GC
+destroys the object it first executes destructor in that case it will have to wait for code to release
+the unmanaged resource. This results in additional delays in GC. So it is recommended to
+implement IDisposable interface, write cleanup code in Dispose method, and call
+GC.SuppressFinalize method. Its like instructing GC not to call your constructor. For more details
+read why is it preferred to not use finalize for clean up? in OOPS chapter.
+
+
+
+-GAC: What is Delay signing In .Net Framework
+During development process you will need strong name keys to be exposed to developer which is
+
+not a good practice from security aspect point of view.In such situations you can assign the key
+later on and during development you an use delay signing
+Following is process to delay sign an assembly:
+
+• First obtain your string name keys using SN.EXE.
+
+• Annotate the source code for the assembly with two custom attributes from
+System.Reflection: AssemblyKeyFileAttribute, which passes the name of the file
+containing the public key as a parameter to its constructor.
+AssemblyDelaySignAttribute, which indicates that delay signing, is being used by
+passing true as a parameter to its constructor. For example as shown below:
+
+[Assembly: AssemblyKeyFileAttribute ("myKey.snk")]
+[Assembly: AssemblyDelaySignAttribute (true)]
+
+The compiler inserts the public key into the assembly manifest and reserves space in the PE file
+for the full strong name signature. The real public key must be stored while the assembly is built
+so that other assemblies that reference this assembly can obtain the key to store in their own
+assembly reference.
+
+• Because the assembly does not have a valid strong name signature, the verification of
+that signature must be turned off. You can do this by using the –Vr option with the
+Strong Name tool. The following example turns off verification for an assembly called
+myAssembly.dll.
+
+Sn –Vr myAssembly.dll
+
+• Just before shipping, you submit the assembly to your organization signing authority
+for the actual strong name signing using the –R option with the Strong Name tool. The
+following example signs an assembly called myAssembly.dll with a strong name using the
+sgKey.snk key pair.
+
+Sn -R myAssembly.dll sgKey.snk
+
+
+
+-How to add an assembly In GAC In .Net Framework
+• Using Gacutil. Go to “Visual Studio Command Prompt”
+and type “gacutil –i
+(assembly name)”, where (assembly name) is the DLL name of the project.
+
+
+
+-GAC: What is the strong names (SN.EXE) to assembly In .Net
+Strong name is similar to GUID (It is supposed to be unique in space and time) in COM
+components. Strong Name is only needed when we need to deploy assembly in GAC. Strong
+Names helps GAC to differentiate between two versions. Strong names use public key
+cryptography (PKC) to ensure that no one can spoof it.PKC use public key and private key
+concept.
+
+Following are the step to generate a strong name and sign a assembly:-
+
+• Go to “Visual Studio Command Prompt”. See the below figure “Visual studio Command
+prompt”. Note the samples are compiled in 2005 but 2008 users do not have to worry
+about it. Same type of command prompt will be seen in 2008 also.
+ 
+
+
+• Once you are in command, prompt type sn.exe -k “c:\test.snk”.
+
+
+
+
+Fig:-Successful output of SN.EXE
+
+
+
+ 
+      Fig:- Sample view of test.snk file
+• After generation of the file you can view the SNK file in a simple notepad.
+• After the SNK file is generated its time to sign the project with this SNK file.
+
+
+
+Fig:-Click on project & then click on “classlibrary1 properties” menu to sign the assembly
+• Click on project -- properties and the browse the SNK file from the respective folder
+and compile the project.
+
+
+Fig:- Click on ‘Use a key file’ to sign the assembly with strong name
+
+
+
+
+-GAC: What is GAC (Global Assembly Cache) In .Net Framework
+GAC (Global Assembly Cache) is where all shared .NET assembly
+reside. GAC is used in the
+following situations:-
+• If the application has to be shared among several application.
+• If the assembly has some special security, requirements like only administrators can
+remove the assembly. If the assembly is private then a simple delete of assembly
+the assembly file will remove the assembly.
+
+
+
+
+-assemblies: Is versioning applicable to private assemblies In .Net
+Versioning concept is only applicable to global assembly cache
+(GAC) as private assembly lie in
+their individual folders. This does not mean versioning is not needed , you can still version it to
+have better version control on the project. 
+
+
+
+-Where is version information stored of an assembly In .Net
+Version information is stored in assembly inside
+the manifest. 
+
+
+
+
+-What is Manifest In .Net Assembly
+Assembly metadata is stored in Manifest. Manifest contains all the metadata needed to do the
+following things (See Figure Manifest View for more details):
+• Version of assembly.
+• Security identity.
+• Scope of the assembly.
+• Resolve references to resources and classes.
+The assembly manifest can be stored in a PE file either (an .exe or) .dll with Microsoft
+intermediate language (MSIL code with Microsoft intermediate language (MSIL) code or in a
+stand-alone PE file, that contains only assembly manifest information.
+
+
+-What is ILDASM (Intermediate Language Disassembler) Tool In .Net Framework
+
+When it comes to understanding of internals, nothing can beat ILDASM. ILDASM converts the
+whole ‘exe’ or ‘dll’ in to IL code. To run ILDASM you have to go to ‘C:\Program
+Files\Microsoft Visual Studio .NET 2003\SDK\v1.1\Bin’. Note that we had v1.1 you have to
+probably change it depending on the type of framework version you have.
+
+
+
+-What is Difference between NameSpace and Assembly In .Net
+
+what is the difference between namespace and assembly is the most frequently asked question in the interview and its very easy to understand the differnce,Following are the differences between namespace and assembly:
+
+NameSpace is a Collection of names while each name is Unique,They form the logical boundary for a Group of classes,Namespace must be specified in Project-Properties.
+While an assembly is physical grouping of logical units, Namespace, logically groups classes.
+
+
+a source code contains classes,interfaces and other type if we want to separate different-2 type of functionality then we use namespace we make classes that have different -2 type of functionality we placed it at different - 2 namespaces for distinguishing the functionality separately, and when we built the application it generate the physical unit called assembly having lot of logical namespaces and classes.
+
+
+
+
+-What is NameSpace In .Net Framework
+Namespace has two basic functionality:-
+• NameSpace Logically group types, example System.Web.UI logically
+groups UI
+related features.
+• In Object Oriented world, many times it is possible that programmers will use the
+same class name. Qualifying NameSpace with class name can avoid this collision.
+
+
+
+-What is NameSpace in .Net
+This a basic question which allways asked in the interview that what is the namespace ,do you know about namespace,can you tell me some words about namespace.
+
+NameSpace is the Logical group of types or we can say namespace is a container (e.g Class, Structures, Interfaces, Enumerations, Delegates etc.), example System.IO logically groups input output related features , System.Data.SqlClient is the logical group of ado.net Connectivity with Sql server related features. In Object Oriented world, many times it is possible that programmers will use the same class name, Qualifying NameSpace with class name can avoid this collision.
+
+Example :-
+
+
+// Namespace Declaration
+using System;
+
+// The Namespace
+namespace MyNameSpace
+{
+    // Program start class
+    class MyClass
+    {
+       //Functionality
+    }
+}
+
+
+Namespaces allow you to create a system to organize your code. A good way to organize your namespaces is via a hierarchical system. You put the more general names at the top of the hierarchy and get more specific as you go down. This hierarchical system can be represented by nested namespaces. Bellow shows how to create a nested namespace. By placing code in different sub-namespaces, you can keep your code organized.
+
+
+// Namespace Declaration
+using System;
+
+// The Namespaces
+namespace MyNameSpace
+{
+    namespace Video
+    {
+        // Program start class
+        class MyVideo
+        {
+            //Functionality
+           public static void play()
+
+           {
+              //.. 
+           }
+        }
+    }
+
+    namespace Audio
+    {
+        // Program start class
+        class MyAudio
+        {
+            //Functionality
+           public static void play()
+           {
+               //.. 
+           }
+        }
+    }
+}
+
+Now a question arise on our mind that how to call the namespace members so there is two way to call namespace members By typing a fully qualified name, Or by implement the using directive.
+
+Here i provides an example of how to call namespace members with fully qualified names. A fully qualified name contains every language element from the namespace name down to the method call. At the top of the listing there is a nested namespace tutorial within the MyNameSpace namespace with class Video, Audio and method play().Here we calls this method with the fully qualified name :
+MyNameSpace.Video.MyVideo.play() 
+MyNameSpace.Audio.MyAudio.play()
+If we call play method in the same namespace then no need to include MynameSpace at the begin e.g. Video.play().
+
+Now implement this by using directive
+
+using MyNameSpace.Video;
+using MynameSpace.Audio;
+
+
+public void call()
+{
+  Video.play()
+}
+
+If our method would not be static then make instance then call by the object of the class.
+
+
+
+
+
+
+
+-What are the different types of Assembly In .Net Framework
+There are two types of assembly Private and Public assembly. A private assembly is normally
+used by a single application, and is stored in the application's directory, or a sub-directory
+beneath. A shared assembly is normally stored in the global assembly cache, which is a repository
+of assemblies maintained by the .NET runtime. Shared assemblies are usually libraries of code,
+which many applications will find useful, e.g. Crystal report classes that will be used by all
+application for Reports.
+
+
+
+-What is a Assembly (.DLL .EXE) In .Net Framework
+
+• Assembly is unit of deployment like EXE or a DLL.
+
+• An assembly consists of one or more files (dlls, exe’s, html
+files etc.), and
+represents a group of resources, type definitions, and implementations of those
+types. An assembly may also contain references to other assemblies. These
+resources, types and references are described in a block of data called a manifest.
+The manifest is part of the assembly, thus making the assembly self-describing.
+ 
+• An assembly is completely self-describing. An assembly contains metadata
+information, which is used by the CLR for everything from type checking an
+security to actually invoking the components methods. As all information is in
+the assembly itself, it is independent of registry. This is the basic advantage as
+compared to COM where the version was stored in registry.
+ 
+• Multiple versions can be deployed side by side in different folders. These different
+versions can execute at the same time without interfering with each other.
+Assemblies can be private or shared. For private assembly deployment, the
+assembly is copied to the same directory as the client program that references it. No
+registration is needed, and no fancy installation program is required. When the
+component is removed, no registry cleanup is needed, and no uninstall program is
+required. Just delete it from the hard drive.
+ 
+• In shared assembly deployment, an assembly is installed in the Global Assembly
+Cache (or GAC). The GAC contains shared assemblies that are globally accessible
+to all .NET applications on the machine.
+
+
+
+
+
+-Difference between abstract class and interface
+Here is an example to show the difference between abstract class and interface in c# asp.net.
+About Abstract Class :
+Abstract class is a class that contain complete and abstract (incomplete) both type of member and it can not be instantiated, Abstract classes are one of the essential behaviors provided by dotnet.
+
+Interface contains only definition / signature of functionality, and if we have some common functionality as well as common signature then there is a need of abstract class so through abstract class we can provide behavior as well as functionality both in the same time, developer inheriting abstract class can use this functionality and need to fill only in the blank.
+
+About Interface :
+Interface is a type which contains only the signatures of methods, delegates or events, it has no implementation, Implementation of the methods is done by the class that which implements the interface.
+
+Interface is a contract that defines the signature of the functionality. So if a class is implementing a interface it says to the outer world, that it provides specific behavior. Example if a class is implementing ‘Idisposable’ interface that means it has a functionality to release unmanaged resources.
+
+OOPs interface vs abstract class
+Interface 	Abstract class
+Interface support multiple inheritance 	Abstract class does not support multiple inheritance
+Interface does'n Contains Data Member 	Abstract class contains Data Member
+Interface does'n contains Cunstructors 	Abstract class contains Cunstructors
+An interface Contains only incomplete member (signature of member) 	An abstract class Contains both incomplete (abstract) and complete member
+An interface cannot have access modifiers by default everything is assumed as public 	An abstract class can contain access modifiers for the subs, functions, properties
+Member of interface can not be Static 	Only Complete Member of abstract class can be Static
+
+To Know More about Interface and Abstract Class Click Bellow :-
+
+
+
+
+
+-What is abstract class in c#
+Abstract class is a class that contain complete and abstract (incomplete) both type of member and it can not be instantiated, Abstract classes are one of the essential behaviors provided by dotnet.
+
+Interface contains only definition / signature of functionality, and if we have some common functionality as well as common signature then there is a need of abstract class so through abstract class we can provide behavior as well as functionality both in the same time, developer inheriting abstract class can use this functionality and need to fill only in the blank.
+
+Abstract classes only represent as a base classes, no one can instantiate (create objects) these classes.
+
+In C#.net We can create abstract class by the use of abstract Keyword and Abstract member by the abstract Keyword.
+
+In Visual Basic We can create abstract class by the keyword MustInherit and Abstract member by the MustOverride Keyword
+
+Features of a abstract class :-
+
+    Abstract Class (Incomplete Class)  contains both Complete or Abstract (incomplete) Members.
+
+     We can not create a object of abstract class.
+
+    Abstract class is designed to act as a base class (to be inherited by other classes).
+
+    Abstract can contain Data Member and Constructors.
+
+    Constructor of abstract class can not be initialize directly, it can be call by derived class.
+
+    Incomplete Member (abstract member) of Abstract class  is implicitly virtual (it can be further overridden).
+
+    It also contain static member but only complete member can be static not abstract member (Static members cannot be abstract).
+
+
+
+
+-What is a Interface in C# .Net
+Interface is a type which contains only the signatures of methods, delegates or events, it has no implementation.
+Implementation of the methods is done by the class that which implements the interface.
+
+Interface is a contract that defines the signature of the functionality. So if a class is implementing a interface it says to the outer world, that it provides specific behavior. Example if a class is implementing ‘Idisposable’ interface that means it has a functionality to release unmanaged resources.
+
+If a class implements a interface then it has to provide implementation to all its methods.
+Properties Of Interface:-
+
+    Supports multiple inheritance(Single Class can implement multiple interfaces).
+
+    Contains only incomplete method.
+
+    Can not Contains data members.
+
+    By Default interface members is public (We Can not set any access modifier into interface members).
+
+     Interface can not contain constructors.
+
+
+Example :- Defining an Interface:
+
+     interface IApp
+     {
+       int Sum(int i, int j); //By Default Public
+     }
+     class App : IApp
+     {
+        public int sum(int i, int j) //Must be declare Public
+        {
+           return i + j;
+        }
+     }
+
+
+
+
+
+-Where and in which format View State information stored in a webpage in asp.net
+Similar:-
+View state data stored in which format.
+where is view state information stored (server or client)?
+
+View state data is stored in the client side(Webpage) in the form of a hidden control(HTML hidden field) named “__VIEWSTATE” and View State Data is stored in Base64 String encoded format which can be further decoded.
+
+Viewstate life cycle explanation :
+
+All data stored in viewstate serialize and encode into base64 format at the time of rendering of page and converted into slandered hidden field (i.e ) with a specific name called __VIEWSTATE you can see it just open page source in browser and find for __VIEWSTATE, further at the time of post back asp.net decode , desalinize this hidden field and converts it back to viewstate object in a event called loadviewstate which fire just after page init.
+
+
+
+
+-What is AppSetting Section in Web.Config file in asp.net
+Web.config file defines configuration for a web project. Using "AppSetting" section, we can define user-defined values (custom key value dictionary) like "service url, stop word, Max Connection, mail server, mail port etc, that will be accessible through configuration  manager class through out the project for any other purpose.
+
+Example:-
+
+<appSettings>
+   <add key="connection1" value="server=tdsw008;database=ERM; uid=sa;pwd=********;"/>
+   <add key="connectionSAP" value="server=90.10.0.23;database=ACDB_PROD;uid=sa;pwd=********"/>
+   <add key="ServerName" value="tdsw017"/>
+</appSettings>
+
+
+
+-What is the use of @ Register directives in asp.net
+@Register directive informs the compiler of any custom server control (like ajaxcontrols, usercontrol.ascx) added to the page.
+
+Example:-
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
+
+
+
+-What is event bubbling in Asp.Net
+Handling(tracking) child controls events (only button type child controls) through parent control in data bind controls known as event bubbling.
+
+Server controls like Datagrid, DataList, and Repeater can have other child controls inside them.
+
+Example DataGrid can have combo box inside datagrid. These child control do not raise there events by themselves, rather they pass the event to the container parent (which can be a datagrid,
+datalist, repeater), which passed to the page as "ItemCommand" event. As the child control send events to parent it is termed as event bubbling.
+
+
+
+
+-Event In which all controls are fully loaded in asp.net
+Page load event guarantees that all controls are fully loaded. Controls are also accessed in Page_Init event but you will see that view state is not fully loaded during this event.
+
+
+
+-What is the ASP.NET Page Event Life Cycle
+Similar:-
+What is the sequence in which ASP.NET events are processed
+
+Following is the sequence in which the events occur:-
+
+• Page_Init.
+• Page Load.
+• Control events
+• Page Render events
+• Page- Unload event.
+
+Page_init event only occurs when first time the page is started, but Page Load occurs in
+subsequent request of the page.
+
+Full page event life cycle:-
+•Page_PreInit
+•Page_Init
+•Page_InitCompleet
+
+•Page_PreLoad
+•Page_Load
+•Page_LoadCompleet
+
+•Control Events
+
+•Page_PreRender
+•Page_RenderCompleet
+
+•Page_Unload
+
+
+
+
+-Binding a version in two version of same assembly in GAC.
+You need to specify “bindingRedirect” in your config file. For
+instance in the below case “ClassLibraryVersion” has two versions “1.1.1830.10493” and “1.0.1830.10461” from which “1.1.1830.10493” is the recent version. However, using the bindingRedirect we can specify saying “1.0.1830.10461” is the new version. Therefore, the client will not use “1.1.1830.10493”
+
+<Configuration>
+ <runtime>
+  <assemblyBinding xmlns="urn: schemas-microsoft-com:asm.v1">
+    <dependentAssembly>
+      <assemblyIdentity name="ClassLibraryVersion"
+            PublicKeyToken="b035c4774706cc72"
+            Culture="neutral"/>
+            <bindingRedirect oldVersion= "1.1.1830.10493"
+            NewVersion= "1.0.1830.10461"/>
+       </dependentAssembly>
+     </assemblyBinding>
+   </runtime>
+</configuration>
