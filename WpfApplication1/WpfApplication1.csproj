@@ -59,6 +59,8 @@
     <Compile Include="BasicWindow.xaml.cs">
       <DependentUpon>BasicWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Conversion.cs" />
+    <Compile Include="ConversionHelper.cs" />
     <Compile Include="Inherite.cs" />
     <Compile Include="InheritWindow.xaml.cs">
       <DependentUpon>InheritWindow.xaml</DependentUpon>

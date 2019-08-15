@@ -20,8 +20,75 @@ using System.Xml;
 
 namespace WpfApplication1
 {
-    public class AAA {
+    public class AAA
+    {
         public string aa;
+
+        public AAA()
+        {
+            Debug.WriteLine("public AAA()");
+        }
+
+        static AAA()
+        {
+            Debug.WriteLine("static AAA()");
+        }
+
+        public static void Write()
+        {
+            Debug.WriteLine("AAA.Write()");
+        }
+
+        public static void Read()
+        {
+            Debug.WriteLine("AAA.Read()");
+        }
+
+    }
+
+    public class BBB : AAA
+    {
+
+        public BBB()
+        {
+            Debug.WriteLine("public BBB()");
+        }
+
+        static BBB()
+        {
+            Debug.WriteLine("static BBB()");
+        }
+
+        public static new void Write()
+        {
+            Debug.WriteLine("BBB.Write()");
+        }
+
+        public static new void Read()
+        {
+            Debug.WriteLine("BBB.Read()");
+        }
+
+    }
+
+    public static class SAAA
+    {
+
+        static SAAA()
+        {
+            Debug.WriteLine("SAAA()");
+        }
+
+        public static void Write()
+        {
+            Debug.WriteLine("SAAA.Write()");
+        }
+
+        public static void Read()
+        {
+            Debug.WriteLine("SAAA.Read()");
+        }
+
     }
 
     /// <summary>
@@ -34,6 +101,23 @@ namespace WpfApplication1
         {
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
+
+            Debug.WriteLine("Start test");
+
+            AAA.Write();
+            BBB.Write();
+            SAAA.Write();
+
+            var aaa2 = new AAA();
+
+            AAA.Read();
+            BBB.Read();
+            SAAA.Read();
+
+            var bbb2 = new BBB();
+
+            Debug.WriteLine("End test");
+
             Derived1 ddd = new Derived1();
             Base1 bbb1 = new Base1();
             //ddd = bbb1;
@@ -122,6 +206,8 @@ namespace WpfApplication1
             //lastLetter(str);
 
         }
+
+
 
 
         public async void asdf ()
